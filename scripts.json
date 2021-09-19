@@ -1,0 +1,21 @@
+{
+  "$schema": "https://deno.land/x/denon@2.4.8/schema.json",
+  "scripts": {
+    "debug": {
+      "cmd": "deno run -A --inspect --unstable mod.ts -c config.json",
+      "desc": "run it"
+    },
+    "run": {
+      "cmd": "deno run -A --no-check --unstable mod.ts -c config.json",
+      "desc": "run it fast"
+    }
+  },
+  "logger": {
+    "fullscreen": true,
+    "quiet": false,
+    "debug": false
+  },
+  "watcher": {
+    "match": ["./compiler/**/*", "./deps/**/*", "./server/**/*", "./*"]
+  }
+}

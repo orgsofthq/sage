@@ -1,0 +1,1 @@
+export {debounce} from "https://deno.land/x/rambda@v6.5.3/debounce.js"
