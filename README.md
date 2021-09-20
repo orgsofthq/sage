@@ -1,4 +1,4 @@
-# Ω sage
+# 🌿 sage
 
 Simple, fast, and customizable **website builder**. 
 
@@ -193,8 +193,8 @@ Files in `src/` will be compiled to `public/`.
 ### Via code
 
 ```js
-import { compileString } from "https://github.com/organic-software/sage/compiler/mod.ts";
-import mdRuleset from "https://github.com/organic-software/sage/compiler/rules/markdown/ruleset.ts";
+import { compileString } from "https://github.com/organic-software/sage/blob/main/compiler/mod.ts";
+import mdRuleset from "https://github.com/organic-software/sage/blob/main/compiler/rules/markdown/ruleset.ts";
 
 const input = "# Hello universe!";
 const output = compileString(input, { rulesets: [mdRuleset] });
