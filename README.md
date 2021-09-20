@@ -32,7 +32,7 @@ Use this if you don't plan to change any code.
 
 One-line:
 ```sh
-deno install -qAf --unstable https://github.com/organic-software/sage/mod.ts
+deno install -qAf --unstable -n sage https://raw.githubusercontent.com/organic-software/sage/main/mod.ts
 ```
 
 Or, alternatively to download the source code:
@@ -122,7 +122,7 @@ other dependencies.
 1. Download repository:
 
 ```bash
-git clone https://github.com/organic-software/sage/mod.ts && cd sage
+git clone https://github.com/organic-software/sage && cd sage
 ```
 
 2. Run:
