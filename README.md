@@ -2,7 +2,7 @@
 
 Simple, fast, and customizable **website builder**. 
 
-![video demo of sage](misc/demo.gif)
+![video demo of sage](https://raw.githubusercontent.com/organic-software/misc/main/sage-demo.gif)
 
 Aiming to support a more ideal site or text authoring workflow. 
 

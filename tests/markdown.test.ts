@@ -5,28 +5,35 @@ import { compileString } from "../compiler/mod.ts";
 const compileMd = async (input: string) =>
   await compileString(input, { rulesets: ["markdown"] });
 
-Deno.test("h1 markdown", async () => {
+Deno.test("markdown: h1", async () => {
   assertEquals(
     await compileMd("# Hello universe!"),
     '<h1 id="hello-universe">Hello universe!</h1>'
   );
 });
 
-Deno.test("h4 markdown", async () => {
+Deno.test("markdown: h4", async () => {
   assertEquals(
     await compileMd("#### Hello universe!"),
     '<h4 id="hello-universe">Hello universe!</h4>'
   );
 });
 
-Deno.test("bold italic markdown", async () => {
+Deno.test("markdown: bold italic", async () => {
   assertEquals(
     await compileMd("**Best** *test* in the west"),
     "<p><strong>Best</strong> <i>test</i> in the west</p>"
   );
 });
 
-Deno.test("image markdown", async () => {
+Deno.test("markdown: italic next to link", async () => {
+  assertEquals(
+    await compileMd("*what* is going [on](wikipedia.org)"),
+    `<p><i>what</i> is going <a href="wikipedia.org">on</a></p>`
+  );
+});
+
+Deno.test("markdown: image", async () => {
   assertEquals(
     await compileMd(
       "![CC0 logo](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Public_Domain_Mark_button.svg)"
@@ -35,7 +42,7 @@ Deno.test("image markdown", async () => {
   );
 });
 
-Deno.test("table", async () => {
+Deno.test("markdown: table", async () => {
   const input = `
 | Column 0 | Column 1 | !@!@! |
 | --- | --- | ---|
@@ -56,7 +63,7 @@ Deno.test("table", async () => {
   assertEquals(actualOutput, expectedOutput);
 });
 
-Deno.test("formatting in link", async () => {
+Deno.test("markdown: link with ignored formatting", async () => {
   assertEquals(
     await compileMd("[The best link](wikipedia.org/**yeet**)"),
     `<p><a href="wikipedia.org/**yeet**">The best link</a></p>`

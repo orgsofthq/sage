@@ -8,7 +8,7 @@ const options: InlineRuleOptions = {};
 
 const process = reapply(
   replaceCompose([
-    replaceString(name, /^(?<pre>.*)(?<text>\\n|\\|\s\s)(?<post>.*)$/, "<br />"),
+    replaceString(name, /^(?<pre>.*)(?<text>\s\s)(?<post>.*)$/, "<br />"),
   ]),
 );
 

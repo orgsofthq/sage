@@ -43,8 +43,8 @@ export const getRuleset = async (opts?: RulesetOptions) => {
     await import("./meta/collapse-emptylines.ts"),
     await import("./meta/list.ts"),
     // await import("./meta/code.ts"),
-    await import("./meta/paragraph.ts"),
     await import("./meta/table.ts"),
+    await import("./meta/paragraph.ts"),
   ].map((x) => x.default);
 
   return {

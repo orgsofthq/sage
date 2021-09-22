@@ -23,7 +23,7 @@ export default function (
         if (
           (rule.options?.skipIfRulesMatched || empty).find((innerRule) => {
             // Check if rule has already been applied to token
-            return token.rules.includes(innerRule) || rulesApplied.has(innerRule)
+            return token.rules.includes(innerRule)
           })
         ) {
           continue;

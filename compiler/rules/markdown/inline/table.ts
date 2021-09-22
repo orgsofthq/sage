@@ -1,7 +1,7 @@
 import { match, matchCompose } from "../../../lib/match.ts";
 import { InlineRule } from "../../../lib/types.ts";
 
-export const regex = /(?:\|\s*([^|]+)).*?/;
+export const regex = /^\s*(?:\|\s*([^|]+)).*?/;
 export const rowRegex = /(?:\|\s*([^|]+)).*?/;
 
 export const name = "table";

@@ -40,7 +40,6 @@ const process = (lineTokens: LineToken[]): LineToken[] => {
 
     const currentTokenIsTable = lt.rules.includes(tableRuleName);
     const inTable = preToken != null;
-
     if (!currentTokenIsTable && inTable) {
       // Ended table, write out
       postToken = lt.subtokens[0];

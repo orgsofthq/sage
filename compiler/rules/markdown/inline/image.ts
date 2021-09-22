@@ -22,7 +22,8 @@ const process = reapply((token: InlineToken): InlineToken[] | null => {
       token,
       `<img src="${match.groups!.url}" title="${match.groups!.title}" ${
         match.groups!.alt ? `alt="${match.groups!.alt}"` : ""
-      }/>`
+      }/>`,
+      name
     ),
     tok(token, match.groups!.post),
   ]);

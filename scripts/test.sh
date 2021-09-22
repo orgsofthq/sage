@@ -1,2 +1,2 @@
 #!/bin/bash
-deno test -A --unstable
+deno test -A --unstable "$@"
