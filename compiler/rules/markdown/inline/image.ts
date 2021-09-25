@@ -8,7 +8,6 @@ const regex =
 const name = "image";
 
 const options = {
-  block: true,
 };
 
 const process = reapply((token: InlineToken): InlineToken[] | null => {

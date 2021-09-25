@@ -1,6 +1,6 @@
 # 🌿 sage
 
-Simple, fast, and customizable **website builder**. 
+Simple, fast, and customizable **website editor** and **text-formatter**.
 
 ![video demo of sage](https://raw.githubusercontent.com/organic-software/misc/main/sage-demo.gif)
 
@@ -14,8 +14,8 @@ Either use the built-in modules, or bring your own: markup language, templates, 
 - **Live reloading.** Changes show immediately in the browser when saving.
 - Supports `{{ nunjucks }}` templates, \*\***Markdown**\*\*, and extensions (like
   [[[Backlinks]]](#) and Emoji 😀) out of the box.
-- A simple **markup language parser** standalone module. Easy to design your own Markdown variants or alternative.
-- **Modular design**. Each component – the compiler, parser, and rulesets – can be  configured, extended, or extracted to be used separately.
+- A from-scratch **markup language compiler**. Write your own Markdown extensions or text formatting rules easily.
+- **Modular design**. Each component – the compiler, server, and rulesets – can be  configured, extended, or extracted to be used separately.
 - **Built with [Deno](https://deno.land/)** in TypeScript.
 
 ## Using sage
@@ -32,7 +32,7 @@ Use this if you don't plan to change any code.
 
 One-line:
 ```sh
-deno install -qAf --unstable -n sage https://raw.githubusercontent.com/organic-software/sage/main/mod.ts
+deno install -qAf --unstable https://deno.land/x/sage/mod.ts 
 ```
 
 Or, alternatively to download the source code:
@@ -110,7 +110,9 @@ You can pass an `input` parameter to process a single string of text instead of 
 
 ## Limitations
 
-- Markdown is not implemented fully yet, there are a handful of things won't not work (e.g. nested lists, block quotes). Feel free to put up a pull request or issue.
+- Markdown is not implemented fully yet, there are a handful of things won't not work (e.g. nested lists, block quotes). Feel free to put up a pull request or issue. 
+
+- The server is a bit unstable, seems like a Deno issue.
 
 ## Developing sage
 

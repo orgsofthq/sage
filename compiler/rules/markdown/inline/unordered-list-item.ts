@@ -8,7 +8,6 @@ const regex =
 const name = "unordered-list-item";
 
 const options = {
-  block: true,
 };
 
 const process = reapply(replaceTag(name, regex, 'li'))

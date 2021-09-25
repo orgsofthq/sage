@@ -8,7 +8,7 @@
             "name": "Debug Deno",
             "request": "launch",
             "type": "pwa-node",
-            "program": "app.ts",
+            "program": "mod.ts",
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "deno",
             "runtimeArgs": [

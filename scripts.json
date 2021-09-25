@@ -1,12 +1,12 @@
 {
-  "$schema": "https://deno.land/x/denon@2.4.8/schema.json",
+  "$schema": "https://deno.land/x/denon@2.4.9/schema.json",
   "scripts": {
     "debug": {
-      "cmd": "deno run -A --inspect --unstable mod.ts -c config.json",
+      "cmd": "deno run -A --inspect --unstable mod.ts -c sage.json",
       "desc": "run it"
     },
     "run": {
-      "cmd": "deno run -A --no-check --unstable mod.ts -c config.json",
+      "cmd": "deno run -A --no-check --unstable mod.ts -c sage.json",
       "desc": "run it fast"
     }
   },

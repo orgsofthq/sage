@@ -3,7 +3,7 @@ import { tok, toks } from "../../../lib/token.ts";
 import { InlineRule, InlineToken } from "../../../lib/types.ts";
 
 const regex =
-  /(?<pre>.*)\[(?<text>.*)\]\((?<url>.+?)(\s+\"(?<title>.*)\")?\)(?<post>.*)/;
+  /(?<pre>.*)\[(?<text>.*)\]\((?<url>.+)(\s+\"(?<title>.*)\")?\)(?<post>.*)/;
 
 const name = "link";
 
@@ -20,7 +20,16 @@ const process = reapply((token: InlineToken): InlineToken[] | null => {
       token,
       `<a href="${match.groups!.url}"${
         match.groups!.title ? ` alt="${match.groups!.title}"` : ""
-      }>${match.groups!.text}</a>`,
+      }>`,
+      name
+    ),
+    tok(
+      token,
+      `${match.groups!.text}`,
+    ),
+    tok(
+      token,
+      `</a>`,
       name
     ),
     tok(token, match.groups!.post),

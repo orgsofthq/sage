@@ -38,7 +38,7 @@ Deno.test("markdown: image", async () => {
     await compileMd(
       "![CC0 logo](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Public_Domain_Mark_button.svg)"
     ),
-    `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Public_Domain_Mark_button.svg" title="CC0 logo" />`
+    `<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Public_Domain_Mark_button.svg" title="CC0 logo" /></p>`
   );
 });
 
@@ -65,7 +65,7 @@ Deno.test("markdown: table", async () => {
 
 Deno.test("markdown: link with ignored formatting", async () => {
   assertEquals(
-    await compileMd("[The best link](wikipedia.org/**yeet**)"),
-    `<p><a href="wikipedia.org/**yeet**">The best link</a></p>`
+    await compileMd("[The best link](wikipedia.org/**yeet**_(page))"),
+    `<p><a href="wikipedia.org/**yeet**_(page)">The best link</a></p>`
   );
 });
