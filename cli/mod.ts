@@ -10,15 +10,16 @@ import compiler, {
 import { defaultFileOptions } from "../compiler/mod.ts";
 import server from "../server/mod.ts";
 
-type SageOptions =
-  & CompilerOptions
-  & (CompilerFileSource | CompilerStringSource);
+type SageOptions = {
+  server: boolean;
+} & CompilerOptions &
+  (CompilerFileSource | CompilerStringSource);
 
 type CliArgs =
   | SageOptions
   | {
-    config: string;
-  };
+      config: string;
+    };
 
 const init = async (opts: CompilerOptions & CompilerFileSource) => {
   try {
@@ -34,7 +35,7 @@ const init = async (opts: CompilerOptions & CompilerFileSource) => {
       indexFile,
       `# Hello world!
   Run \`sage\`, then edit \`${indexFile}\` to update this page.
-      `,
+      `
     );
     console.log(`Created ${srcDir}, ${dstDir}, and ${indexFile}`);
   } catch (e) {
@@ -50,9 +51,10 @@ const run = async () => {
     ...defaultFileOptions,
     ...args,
     input: args.input,
+    server: args.server
   };
-  const configFile = args != null && (args.c || args.config) || "sage.json";
-  if (configFile != null && await exists(`${Deno.cwd()}/${configFile}`)) {
+  const configFile = (args != null && (args.c || args.config)) || "sage.json";
+  if (configFile != null && (await exists(`${Deno.cwd()}/${configFile}`))) {
     config = {
       ...config,
       ...JSON.parse(await Deno.readTextFile(configFile)),
@@ -86,11 +88,15 @@ const run = async () => {
 
     // sage watch
     // @ts-ignore \_o_/
-    await Promise.all([compiler(config), server(config)]);
+    if (config.server === false) {
+      await compiler(config)
+    } else {
+      await Promise.all([compiler(config), server(config)]);
+    }
   } catch (e) {
     console.error(
       "Exception while running sage. Make sure you have run `sage init` on the current directory, and your configuration is valid.",
-      e,
+      e
     );
   }
 };

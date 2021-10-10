@@ -4,7 +4,8 @@ import { InlineRule } from "../../../lib/types.ts";
 
 const name = "emoji";
 
-const options = {};
+const options = {
+};
 
 const process = reapply(
   replaceCompose([

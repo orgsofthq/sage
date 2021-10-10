@@ -1,20 +1,21 @@
 {
-  "debug": {
-    "logCompileTime": true,
-    "outputTokens": false
-  },
-  "rulesets": ["standard"],
-  "rulesetOpts": {
-    "standard": {
-      "htmlOptions": {
-        "liveReload": true
-      },
-      "nunjucksOptions": {
-        "templatePath": "src/templates"
-      }
-    }
-  },
-  "baseDir": "site",
-  "srcDir": "src",
-  "dstDir": "public"
+    "debug": {
+        "logCompileTime": true,
+        "outputTokens": false
+    },
+    "rulesets": ["standard"],
+    "rulesetOpts": {
+        "standard": {
+            "html": {
+                "liveReload": true
+            },
+            "nunjucks": {
+                "templatePath": "src/templates"
+            }
+        }
+    },
+    "baseDir": "site",
+    "srcDir": "src",
+    "dstDir": "public",
+    "outputExtension": "html"
 }

@@ -14,8 +14,8 @@ import resRule from "./directory/res.ts";
 import { CompilerOptions, FileCompilerOptions } from "../../compiler.ts";
 
 type StandardRulesetOptions = {
-  htmlOptions: HtmlRulesetOptions;
-  nunjucksOptions: NunjucksRuleOpts;
+  html: HtmlRulesetOptions;
+  nunjucks: NunjucksRuleOpts;
 };
 
 export const getRuleset = async (
@@ -24,12 +24,7 @@ export const getRuleset = async (
 ) => {
   const emd = await getEmdRuleset();
   const nunjucks = await getNunjucksRuleset(
-    {
-      // templates --> /current/working/directory/src/templates
-      templatePath: `${Deno.cwd()}/${compilerOpts?.baseDir ??
-        ""}/${opts?.nunjucksOptions?.templatePath || `${compilerOpts
-        ?.srcDir}/templates`}/`,
-    },
+    opts?.nunjucks, compilerOpts,
   );
 
   return {
@@ -39,7 +34,7 @@ export const getRuleset = async (
       ...(nunjucks.preFileRules ?? []),
     ],
     postFileRules: [
-      getCustomHtmlRule(opts?.htmlOptions || {}),
+      getCustomHtmlRule(opts?.html || {}),
     ],
     directoryRules: [
       resRule,

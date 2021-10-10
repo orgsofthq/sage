@@ -40,6 +40,7 @@ export const defaultFileOptions: FileCompilerOptions = {
   baseDir: defaultBaseDir,
   srcDir: defaultSrcDir,
   dstDir: defaultDstDir,
+  outputExtension: "html"
 };
 // --- End
 

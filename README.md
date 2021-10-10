@@ -88,11 +88,11 @@ Create a `sage.json` file in your working directory, or run `sage --config my_co
   // Pass arguments to configure each ruleset
   "rulesetOpts": {
     "standard": {
-      "htmlOptions": {
+      "html": {
         // Automatically reloads *.html as you develop, turn off for production
         "liveReload": true
       },
-      "nunjucksOptions": {
+      "nunjucks": {
         "templatePath": "src/templates"
       }
     }

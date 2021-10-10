@@ -34,6 +34,7 @@ export type CompilerFileSource = {
   baseDir: string | null;
   srcDir: string;
   dstDir: string;
+  outputExtension: string
 };
 
 export type CompilerOptions = {
@@ -130,7 +131,7 @@ export const compile = (file: string, opts: FileCompilerOptions) =>
       const content = await compileString(text, opts);
 
       const dstPath = `${baseDir ?? "."}/${dstDir}`;
-      const dstFile = `${dstPath}/${file.replace(".md", ".html")}`;
+      const dstFile = `${dstPath}/${file.replace(".md", `.${opts.outputExtension}`)}`;
 
       await Deno.mkdir(dstPath, { recursive: true });
       await Deno.writeTextFile(dstFile, content);
@@ -162,7 +163,7 @@ export const compileAll = (opts: FileCompilerOptions) =>
         const startTime = Date.now();
         if (
           !file.isFile || (!file.name.endsWith(".md") &&
-            !file.name.endsWith(".html"))
+            !file.name.endsWith(".html") && !file.name.endsWith(".xml"))
         ) {
           continue;
         }
@@ -212,6 +213,7 @@ export const compileAll = (opts: FileCompilerOptions) =>
         baseDir: opts.baseDir,
         srcDir: opts.srcDir,
         dstDir: opts.dstDir,
+        outputExtension: opts.outputExtension
       }, dirRules || []);
 
       if (debug?.logCompileTime) {
