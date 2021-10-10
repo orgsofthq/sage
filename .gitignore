@@ -1,0 +1,10 @@
+*
+!*/
+!*.md
+!*.ts
+!*.js
+!*.json
+!*.sh
+!.gitignore
+!misc/demo.gif
+site/
